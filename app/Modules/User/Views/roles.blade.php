@@ -148,7 +148,6 @@ $(document).ready(function () {
                 @endforeach
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-default">Cancel</button>
                     <button type="submit" class="btn btn-info pull-right" id="submit-btn">Submit</button>
                 </div>
                 <!-- /.box-footer -->

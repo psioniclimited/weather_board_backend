@@ -120,23 +120,11 @@ $(document).ready(function () {
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-            <button type="submit" class="btn btn-default">Cancel</button>
             <button type="submit" class="btn btn-primary pull-right">Submit</button>
         </div>
         <!-- /.box-footer -->
         {!! Form::close() !!}
         <!-- /.form ends here -->
-
-
-        @if (count($errors) > 0)
-        <div class="alert alert-danger alert-login col-sm-4">
-            <ul class="list-unstyled">
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
     </div>
     <!-- /.box -->
     <!-- </div> -->
