@@ -82,22 +82,10 @@ $(document).ready(function () {
 
 @endsection
 
-@section('side_menu')
-@endsection
-
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>
-        Roles
-        <small>all roles assigned</small>
-    </h1>
-    <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Settings</a></li>
-        <li><a href="#">Permissions</a></li>
-        <li class="active">Role</li>
-    </ol>
+    <h1>Roles<small>all roles assigned</small></h1>
 </section>
 <!-- Main content -->
 <section class="content">

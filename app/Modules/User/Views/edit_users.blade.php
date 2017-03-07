@@ -60,23 +60,11 @@ $(document).ready(function () {
 
 @endsection
 
-@section('side_menu')
-
-@endsection
-
 @section('content')
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>
-        User Module
-        <small>it all starts here</small>
-    </h1>
-    <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">User</a></li>
-        <li class="active">Edit Users</li>
-    </ol>
+    <h1>User Module<small>it all starts here</small></h1>
 </section>
 <!-- Main content -->
 <section class="content">
