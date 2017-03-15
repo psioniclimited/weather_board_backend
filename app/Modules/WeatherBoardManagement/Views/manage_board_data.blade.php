@@ -3,6 +3,7 @@
 @section('css')
 <!-- DataTables -->
 <link rel="stylesheet" href="{{asset('plugins/datatables/dataTables.bootstrap.css')}}">
+{{-- Validation --}}
 <link rel="stylesheet" href="{{asset('plugins/tooltipster/tooltipster.css')}}">
 @endsection
 
@@ -10,7 +11,7 @@
 <!-- DataTables -->
 <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
-
+{{-- Validation --}}
 <script src="{{asset('plugins/validation/dist/jquery.validate.min.js')}}"></script>
 <script src="{{asset('plugins/tooltipster/tooltipster.js')}}"></script>
 
@@ -25,7 +26,7 @@ $(document).ready(function () {
     });
 
     // initialize validate plugin on the form
-    $('#roles_form').validate({
+    $('#update_price_list_form').validate({
         errorPlacement: function (error, element) {
 
             var lastError = $(element).data('lastError'),
@@ -59,26 +60,6 @@ $(document).ready(function () {
 <script>
     $(document).ready(function () {
 
-        // $('#roles_list').DataTable({
-        //     "paging": false,
-        //     "lengthChange": false,
-        //     "searching": false,
-        //     "ordering": true,
-        //     "info": true,
-        //     "autoWidth": false,
-        //     "processing": true,
-        //     "serverSide": true,
-        //     "ajax": "{{URL::to('/getroles')}}",
-        //     "columns": [
-        //         {"data": "id"},
-        //         {"data": "name"},
-        //         {"data": "display_name"},
-        //         {"data": "description"},
-        //         {"data": "Link", name: 'link', orderable: false, searchable: false}
-        //     ],
-        //     "order": [[1, 'asc']]
-        // });
-
     });
 </script>
 
@@ -87,7 +68,7 @@ $(document).ready(function () {
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>Roles<small>all roles assigned</small></h1>
+    <h1>Weather Board<small>update data to be sent</small></h1>
 </section>
 <!-- Main content -->
 <section class="content">
@@ -97,26 +78,69 @@ $(document).ready(function () {
                 <div class="box-header">
                     <h3 class="box-title">Price List</h3>
                 </div><!-- /.box-header -->
+                <!-- Form starts here -->
+                {!! Form::open(array('url' => 'update_price_list_process', 'id' => 'update_price_list_form', 'class' => 'form-horizontal')) !!}
                 <div class="box-body">
-                    <table id="roles_list" class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Item</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-
-                    </table>
+                    <div class="col-xs-8">
+                        <div class="form-group">
+                            <table id="price_list" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Item Text</th>
+                                        <th>Item Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td><input type="text" class="form-control" id="item_text" name="item_text[]" placeholder="Enter item text" value="{{$price_list[0]->text}}"/></td>
+                                        <td><input type="text" class="form-control" id="item_price" name="item_price[]" placeholder="Enter item price" value="{{$price_list[0]->price}}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td><input type="text" class="form-control" id="item_text" name="item_text[]" placeholder="Enter item text" value="{{$price_list[1]->text}}"/></td>
+                                        <td><input type="text" class="form-control" id="item_price" name="item_price[]" placeholder="Enter item price" value="{{$price_list[1]->price}}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td><input type="text" class="form-control" id="item_text" name="item_text[]" placeholder="Enter item text" value="{{$price_list[2]->text}}"/></td>
+                                        <td><input type="text" class="form-control" id="item_price" name="item_price[]" placeholder="Enter item price" value="{{$price_list[2]->price}}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td><input type="text" class="form-control" id="item_text" name="item_text[]" placeholder="Enter item text" value="{{$price_list[3]->text}}"/></td>
+                                        <td><input type="text" class="form-control" id="item_price" name="item_price[]" placeholder="Enter item price" value="{{$price_list[3]->price}}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td><input type="text" class="form-control" id="item_text" name="item_text[]" placeholder="Enter item text" value="{{$price_list[4]->text}}"/></td>
+                                        <td><input type="text" class="form-control" id="item_price" name="item_price[]" placeholder="Enter item price" value="{{$price_list[4]->price}}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td><input type="text" class="form-control" id="item_text" name="item_text[]" placeholder="Enter item text" value="{{$price_list[5]->text}}"/></td>
+                                        <td><input type="text" class="form-control" id="item_price" name="item_price[]" placeholder="Enter item price" value="{{$price_list[5]->price}}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td><input type="text" class="form-control" id="item_text" name="item_text[]" placeholder="Enter item text" value="{{$price_list[6]->text}}"/></td>
+                                        <td><input type="text" class="form-control" id="item_price" name="item_price[]" placeholder="Enter item price" value="{{$price_list[6]->price}}"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div><!-- form-group -->
+                    </div><!-- col-xs-8 -->
                 </div><!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary pull-right">Update</button>
+                </div><!-- /.box-footer -->
+                {!! Form::close() !!}
+                <!-- Form ends here -->
             </div><!-- /.box -->
         </div><!-- col-xs-6 -->
     </div><!-- row -->
 </section>
 <!-- /.content -->
-
 @endsection
 
