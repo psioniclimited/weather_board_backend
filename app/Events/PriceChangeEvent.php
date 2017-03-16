@@ -9,16 +9,18 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 class PriceChangeEvent extends Event implements ShouldBroadcast
 {
     use SerializesModels;
-    public $text;
+    public $item_text;
+    public $item_price;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($text)
+    public function __construct($item_text, $item_price)
     {
-        $this->text = $text;
+        $this->item_text = $item_text;
+        $this->item_price = $item_price;
     }
 
     /**
