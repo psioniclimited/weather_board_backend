@@ -139,6 +139,57 @@ $(document).ready(function () {
                 <!-- Form ends here -->
             </div><!-- /.box -->
         </div><!-- col-xs-6 -->
+        <div class="col-xs-6">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Ticker Items</h3>
+                </div><!-- /.box-header -->
+                <!-- Form starts here -->
+                {!! Form::open(array('url' => 'update_price_list_process', 'id' => 'update_price_list_form', 'class' => 'form-horizontal')) !!}
+                <div class="box-body">
+                    <div class="col-xs-8">
+                        <div class="form-group">
+                            <table id="price_list" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Ticker Text</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td><textarea class="form-control" name="ticker_text[]" id="ticker_text" cols="80" rows="2"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td><textarea class="form-control" name="ticker_text[]" id="ticker_text" cols="80" rows="2"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td><textarea class="form-control" name="ticker_text[]" id="ticker_text" cols="80" rows="2"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td><textarea class="form-control" name="ticker_text[]" id="ticker_text" cols="80" rows="2"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td><textarea class="form-control" name="ticker_text[]" id="ticker_text" cols="80" rows="2"></textarea></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                        </div><!-- form-group -->
+                    </div><!-- col-xs-8 -->
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-success pull-right">Update</button>
+                </div><!-- /.box-footer -->
+                {!! Form::close() !!}
+                <!-- Form ends here -->
+            </div><!-- /.box -->
+        </div><!-- col-xs-6 -->
     </div><!-- row -->
 </section>
 <!-- /.content -->
