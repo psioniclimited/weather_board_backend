@@ -5,18 +5,29 @@ namespace App\Modules\WeatherBoardManagement\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Modules\WeatherBoardManagement\Models\Content;
+use App\Modules\WeatherBoardManagement\Models\ContentType;
 
 class BoardDataController extends Controller {
+
+    private $content_type_price;
+    private $content_type_ticker;
+
+    function __construct(){
+        $this->content_type_price = ContentType::where('name', 'price_list')->get()->first();
+        $this->content_type_ticker = ContentType::where('name', 'ticker')->get()->first();
+    }
 
     /**
      * [boardData -loads the weather board]
      * @return [view] [description]
      */
     public function boardData(){
-    	$price_list = Content::all();
-    	// dd($price_list);
+        $price_list = Content::where('content_types_id', $this->content_type_price->id)->get();
+    	$ticker_list = Content::where('content_types_id', $this->content_type_ticker->id)->get();
+        
         return view('WeatherBoardManagement::manage_board_data')
-        ->with('price_list', $price_list);
+        ->with('price_list', $price_list)
+        ->with('ticker_list', $ticker_list);
     }
 
 }

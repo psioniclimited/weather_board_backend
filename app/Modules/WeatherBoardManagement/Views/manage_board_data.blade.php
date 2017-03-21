@@ -145,7 +145,7 @@ $(document).ready(function () {
                     <h3 class="box-title">Ticker Items</h3>
                 </div><!-- /.box-header -->
                 <!-- Form starts here -->
-                {!! Form::open(array('url' => 'update_price_list_process', 'id' => 'update_price_list_form', 'class' => 'form-horizontal')) !!}
+                {!! Form::open(array('url' => 'update_ticker_text_process', 'id' => 'update_ticker_text_form', 'class' => 'form-horizontal')) !!}
                 <div class="box-body">
                     <div class="col-xs-8">
                         <div class="form-group">
@@ -159,23 +159,23 @@ $(document).ready(function () {
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td><textarea class="form-control" name="ticker_text[]" id="ticker_text" cols="80" rows="2"></textarea></td>
+                                        <td><textarea class="form-control" name="ticker_text[]" id="ticker_text" cols="80" rows="2">{{$ticker_list[0]->text}}</textarea></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td><textarea class="form-control" name="ticker_text[]" id="ticker_text" cols="80" rows="2"></textarea></td>
+                                        <td><textarea class="form-control" name="ticker_text[]" id="ticker_text" cols="80" rows="2">{{$ticker_list[1]->text}}</textarea></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td><textarea class="form-control" name="ticker_text[]" id="ticker_text" cols="80" rows="2"></textarea></td>
+                                        <td><textarea class="form-control" name="ticker_text[]" id="ticker_text" cols="80" rows="2">{{$ticker_list[2]->text}}</textarea></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td><textarea class="form-control" name="ticker_text[]" id="ticker_text" cols="80" rows="2"></textarea></td>
+                                        <td><textarea class="form-control" name="ticker_text[]" id="ticker_text" cols="80" rows="2">{{$ticker_list[3]->text}}</textarea></td>
                                     </tr>
                                     <tr>
                                         <td>5</td>
-                                        <td><textarea class="form-control" name="ticker_text[]" id="ticker_text" cols="80" rows="2"></textarea></td>
+                                        <td><textarea class="form-control" name="ticker_text[]" id="ticker_text" cols="80" rows="2">{{$ticker_list[4]->text}}</textarea></td>
                                     </tr>
                                 </tbody>
                             </table>

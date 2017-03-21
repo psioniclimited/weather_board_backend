@@ -18,5 +18,7 @@ Route::group(['middleware' => ['web']], function () {
 	// View board data
 	Route::get('/boarddata', 'App\Modules\WeatherBoardManagement\Controllers\BoardDataController@boardData');
 	// Update price list process
-	Route::post('update_price_list_process', 'App\Modules\WeatherBoardManagement\Controllers\BroadcastPriceController@updatePriceListProcess');
+  Route::post('update_price_list_process', 'App\Modules\WeatherBoardManagement\Controllers\BroadcastPriceController@updatePriceListProcess');
+  // Update ticker text process
+	Route::post('update_ticker_text_process', 'App\Modules\WeatherBoardManagement\Controllers\BroadcastTickerTextController@updateTickerTextProcess');
 });
