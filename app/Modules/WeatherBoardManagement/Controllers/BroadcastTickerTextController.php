@@ -3,7 +3,7 @@
 namespace App\Modules\WeatherBoardManagement\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Events\PriceChangeEvent;
+use App\Events\TickerChangeEvent;
 use Event;
 use Illuminate\Http\Request;
 use App\Modules\WeatherBoardManagement\Models\Content;
@@ -45,7 +45,11 @@ class BroadcastTickerTextController extends Controller {
 
             $new_ticker_list->save();
         }
-        
+
+        // Create event with ticker text
+        $my_event = new TickerChangeEvent($ticker_text);
+        // Fire event
+        Event::fire($my_event);
         return back();
     }
 

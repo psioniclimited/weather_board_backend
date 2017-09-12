@@ -57,7 +57,7 @@ class BroadcastPriceController extends Controller {
         // Get current price list
         $price_list = Content::where('users_id', $user_id)
         ->where('content_types_id', 1)->get();
-        dd('test');
+        // dd('test');
         // Delete current price list
         foreach ($price_list as $individual_item_price) {
            $individual_item_price->delete();
