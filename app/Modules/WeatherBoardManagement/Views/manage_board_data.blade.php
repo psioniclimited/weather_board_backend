@@ -5,6 +5,8 @@
 <link rel="stylesheet" href="{{asset('plugins/datatables/dataTables.bootstrap.css')}}">
 {{-- Validation --}}
 <link rel="stylesheet" href="{{asset('plugins/tooltipster/tooltipster.css')}}">
+<!-- iCheck for checkboxes and radio inputs -->
+<link rel="stylesheet" href="{{asset('plugins/iCheck/all.css')}}">
 @endsection
 
 @section('scripts')
@@ -14,6 +16,8 @@
 {{-- Validation --}}
 <script src="{{asset('plugins/validation/dist/jquery.validate.min.js')}}"></script>
 <script src="{{asset('plugins/tooltipster/tooltipster.js')}}"></script>
+<!-- iCheck 1.0.1 -->
+<script src="{{asset('plugins/iCheck/icheck.min.js')}}"></script>
 
 <script>
 $(document).ready(function () {
@@ -51,16 +55,27 @@ $(document).ready(function () {
             dname: {required: "Insert role display name"}
         }
     });
+
+    //iCheck for checkbox and radio inputs
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass: 'iradio_minimal-blue'
+    });
+
+    $('input[name="link"]').on('ifClicked', function (event) {
+        // alert("You clicked " + this.value);
+        if(this.value == '1') {
+            $('.desc').hide();
+            $('#link1').show();
+        }
+        else{
+           $('.desc').hide();
+           $('#link2').show(); 
+        }
+    });
+
 });
 
-
-
-</script>
-
-<script>
-    $(document).ready(function () {
-
-    });
 </script>
 
 @endsection
@@ -191,6 +206,45 @@ $(document).ready(function () {
             </div><!-- /.box -->
         </div><!-- col-xs-6 -->
     </div><!-- row -->
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Add Video</h3>
+                </div><!-- /.box-header -->
+                <!-- Form starts here -->
+                {!! Form::open(array('url' => 'update_video_link_process', 'id' => 'update_video_link', 'class' => 'form-horizontal')) !!}
+                <div class="box-body">
+                    <div class="col-xs-8">
+                        <div class="form-group">
+                            <input type="radio" name="link" class="minimal" value="1" checked>
+                            <label>Youtube link</label>&nbsp;
+                            <input type="radio" name="link" class="minimal" value="2">
+                            <label>Upload video</label>
+                            <br><br>
+                            <div id="link1" class="desc">
+                                <!-- add link -->
+                                <label>Add youtube link</label>
+                                <input type="text" class="form-control" placeholder="Enter ..." name="youtube_link" value="{{$video_link[0]->text}}">
+                            </div>
+                            <br>
+                            <div id="link2" class="desc" style="display:none">
+                                <!-- upload video -->
+                                <label>Upload video</label>
+                                <input type="file" name="local_link">
+                            </div>
+                        </div>
+                    </div><!-- col-xs-8 -->
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-warning pull-right">Update</button>
+                </div><!-- /.box-footer -->
+                {!! Form::close() !!}
+                <!-- Form ends here -->
+            </div><!-- /.box -->
+            
+        </div>
+    </div>
 </section>
 <!-- /.content -->
 @endsection
