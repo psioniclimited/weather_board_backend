@@ -213,7 +213,7 @@ $(document).ready(function () {
                     <h3 class="box-title">Add Video</h3>
                 </div><!-- /.box-header -->
                 <!-- Form starts here -->
-                {!! Form::open(array('url' => 'update_video_link_process', 'id' => 'update_video_link', 'class' => 'form-horizontal')) !!}
+                {!! Form::open(array('url' => 'update_video_link_process', 'id' => 'update_video_link', 'class' => 'form-horizontal', 'enctype' => "multipart/form-data")) !!}
                 <div class="box-body">
                     <div class="col-xs-8">
                         <div class="form-group">
@@ -225,13 +225,13 @@ $(document).ready(function () {
                             <div id="link1" class="desc">
                                 <!-- add link -->
                                 <label>Add youtube link</label>
-                                <input type="text" class="form-control" placeholder="Enter ..." name="youtube_link" value="{{$video_link[0]->text}}">
+                                <input type="text" class="form-control" placeholder="Enter ..." name="youtube_link" value="{{$youtube_video_link[0]->text}}">
                             </div>
                             <br>
                             <div id="link2" class="desc" style="display:none">
                                 <!-- upload video -->
                                 <label>Upload video</label>
-                                <input type="file" name="local_link">
+                                <input type="file" name="file" id="file" value="{{$local_video_link[0]->text}}">
                             </div>
                         </div>
                     </div><!-- col-xs-8 -->
