@@ -225,13 +225,12 @@ $(document).ready(function () {
                             <div id="link1" class="desc">
                                 <!-- add link -->
                                 <label>Add youtube link</label>
-                                <input type="text" class="form-control" placeholder="Enter ..." name="youtube_link" value="{{$youtube_video_link[0]->text}}">
+                                <input type="text" class="form-control" placeholder="Enter ..." name="text">
                             </div>
                             <br>
                             <div id="link2" class="desc" style="display:none">
                                 <!-- upload video -->
-                                <label>Upload video</label>
-                                <input type="file" name="file" id="file" value="{{$local_video_link[0]->text}}">
+                                <label>Upload new video:&nbsp;</label><input type="file" name="video_file" id="video_file">
                             </div>
                         </div>
                     </div><!-- col-xs-8 -->
