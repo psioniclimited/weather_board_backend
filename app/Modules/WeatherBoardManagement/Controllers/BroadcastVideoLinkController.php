@@ -17,6 +17,7 @@ class BroadcastVideoLinkController extends Controller {
 
     function __construct(){
         $this->content_type_video = ContentType::where('name', 'video')->get()->first();
+        ini_set('memory_limit', '10000M');
     }
 
     /**
@@ -25,12 +26,14 @@ class BroadcastVideoLinkController extends Controller {
      * @return [type]           [description]
      */
     public function updateVideoLinkProcess(Request $request){
+        dd($request->file('video_file'));
         // $content = $request->all();
         // $content['content_types_id'] = $this->content_type_video->id;
         // $content['users_id'] = Entrust::user()->id;
 
         $edit_content = Content::where('content_types_id', $this->content_type_video->id);
 
+                dd($request->file('video_file'));
         if ($request->hasFile('video_file')) {
             if ($request->file('video_file')->isValid()) {
                 $request->file('video_file')->move(storage_path('/app/video/'), $request->file('video_file')->getClientOriginalName());
@@ -38,10 +41,7 @@ class BroadcastVideoLinkController extends Controller {
                 $video_link_local = '/app/video/' . $request->file('video_file')->getClientOriginalName();
                 $edit_content->update(['text' => $video_link_local]); 
 
-                $file_path = storage_path() . $video_link_local;
-                $file = File::get($file_path);
-                $video_link = response()->download($file_path);
-                dd($video_link);
+                $video_link = 'http://localhost:8000/getvideo';
             }
         } 
         else {
@@ -62,5 +62,4 @@ class BroadcastVideoLinkController extends Controller {
         $file = File::get($file_path);
         return response()->download($file_path);
     }
-
 }

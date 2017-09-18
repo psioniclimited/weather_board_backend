@@ -24,5 +24,5 @@ Route::group(['middleware' => ['web']], function () {
   // Update video link process
   Route::post('update_video_link_process', 'App\Modules\WeatherBoardManagement\Controllers\BroadcastVideoLinkController@updateVideoLinkProcess');
 
-  Route::get('/getvideo', 'App\Modules\WeatherBoardManagement\Controllers\BroadcastVideoLinkController@serveVideo');
+  Route::post('/getvideo', 'App\Modules\WeatherBoardManagement\Controllers\BroadcastVideoLinkController@serveVideo');
 });
