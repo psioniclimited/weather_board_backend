@@ -63,7 +63,6 @@ $(document).ready(function () {
     });
 
     $('input[name="link"]').on('ifClicked', function (event) {
-        // alert("You clicked " + this.value);
         if(this.value == '1') {
             $('.desc').hide();
             $('#link1').show();
@@ -217,12 +216,12 @@ $(document).ready(function () {
                 <div class="box-body">
                     <div class="col-xs-8">
                         <div class="form-group">
-                            <input type="radio" name="link" class="minimal" value="1" checked>
+                            <input type="radio" name="link" class="minimal" value="1">
                             <label>Youtube link</label>&nbsp;
                             <input type="radio" name="link" class="minimal" value="2">
                             <label>Upload video</label>
                             <br><br>
-                            <div id="link1" class="desc">
+                            <div id="link1" class="desc" style="display:none">
                                 <!-- add link -->
                                 <label>Add youtube link</label>
                                 <input type="text" class="form-control" placeholder="Enter ..." name="text">

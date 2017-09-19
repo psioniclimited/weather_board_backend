@@ -17,7 +17,6 @@ class BroadcastVideoLinkController extends Controller {
 
     function __construct(){
         $this->content_type_video = ContentType::where('name', 'video')->get()->first();
-        ini_set('memory_limit', '10000M');
     }
 
     /**
@@ -26,22 +25,21 @@ class BroadcastVideoLinkController extends Controller {
      * @return [type]           [description]
      */
     public function updateVideoLinkProcess(Request $request){
-        dd($request->file('video_file'));
         // $content = $request->all();
         // $content['content_types_id'] = $this->content_type_video->id;
         // $content['users_id'] = Entrust::user()->id;
 
         $edit_content = Content::where('content_types_id', $this->content_type_video->id);
 
-                dd($request->file('video_file'));
         if ($request->hasFile('video_file')) {
-            if ($request->file('video_file')->isValid()) {
-                $request->file('video_file')->move(storage_path('/app/video/'), $request->file('video_file')->getClientOriginalName());
-                // $content['text'] = '/app/video/' . $request->file('video_file')->getClientOriginalName();
-                $video_link_local = '/app/video/' . $request->file('video_file')->getClientOriginalName();
+            $filename = $request->file('video_file'); 
+            if ($filename->isValid()) {
+                $filename->move(storage_path('/app/video/'), $filename->getClientOriginalName());
+                // $content['text'] = '/app/video/' . $filename->getClientOriginalName();
+                $video_link_local = '/app/video/' . $filename->getClientOriginalName();
                 $edit_content->update(['text' => $video_link_local]); 
 
-                $video_link = 'http://localhost:8000/getvideo';
+                $video_link = 'http://localhost:8000/getvideo/' . $filename->getClientOriginalName();
             }
         } 
         else {
@@ -57,8 +55,8 @@ class BroadcastVideoLinkController extends Controller {
         return back();
     }
 
-    public function serveVideo(){
-        $file_path = storage_path() . '/app/video/video-1.mp4';
+    public function serveVideo($filename){
+        $file_path = storage_path() . '/app/video/' . $filename;
         $file = File::get($file_path);
         return response()->download($file_path);
     }

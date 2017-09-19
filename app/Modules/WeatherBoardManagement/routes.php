@@ -23,6 +23,6 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('update_ticker_text_process', 'App\Modules\WeatherBoardManagement\Controllers\BroadcastTickerTextController@updateTickerTextProcess');
   // Update video link process
   Route::post('update_video_link_process', 'App\Modules\WeatherBoardManagement\Controllers\BroadcastVideoLinkController@updateVideoLinkProcess');
-
-  Route::post('/getvideo', 'App\Modules\WeatherBoardManagement\Controllers\BroadcastVideoLinkController@serveVideo');
+  // Serve video
+  Route::get('/getvideo/{filename}', 'App\Modules\WeatherBoardManagement\Controllers\BroadcastVideoLinkController@serveVideo');
 });
