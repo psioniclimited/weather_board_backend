@@ -40,16 +40,18 @@ class BroadcastVideoLinkController extends Controller {
                 $edit_content->update(['text' => $video_link_local]); 
 
                 $video_link = 'http://localhost:8000/getvideo/' . $filename->getClientOriginalName();
+                $video_type = 'local';
             }
         } 
         else {
             // $content['text'] = $request->get('text');
             $video_link = $request->get('text');
+            $video_type = 'youtube';
             $edit_content->update(['text' => $video_link]);
         }
         
         // Create event with ticker text
-        $my_event = new VideoChangeEvent($video_link);
+        $my_event = new VideoChangeEvent($video_link, $video_type);
         // Fire event
         Event::fire($my_event);
         return back();
