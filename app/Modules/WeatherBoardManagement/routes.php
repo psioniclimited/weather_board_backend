@@ -10,6 +10,12 @@
   |
  */
 
+// Get all data
+
+Route::group(['middleware' => ['api']], function () {
+    Route::controller('sync', 'App\Modules\WeatherBoardManagement\Controllers\SendDataController');
+});
+
 Route::group(['middleware' => ['web']], function () {
 
 	Route::get('/broadcast_test', 'App\Modules\WeatherBoardManagement\Controllers\BroadcastPriceController@broadcastTest');
@@ -25,4 +31,5 @@ Route::group(['middleware' => ['web']], function () {
   Route::post('update_video_link_process', 'App\Modules\WeatherBoardManagement\Controllers\BroadcastVideoLinkController@updateVideoLinkProcess');
   // Serve video
   Route::get('/getvideo/{filename}', 'App\Modules\WeatherBoardManagement\Controllers\BroadcastVideoLinkController@serveVideo');
+  
 });
